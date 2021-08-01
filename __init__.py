@@ -7,6 +7,8 @@ from flaskr import blog
 from flask import flash, request, redirect, url_for,render_template
 from werkzeug.utils import secure_filename
 from zipfile import ZipFile
+import textract
+
 
 
 
@@ -77,8 +79,10 @@ def create_app(test_config=None):
                    with ZipFile(os.path.join(app.config["UPLOAD_FOLDER"], file.filename),"r") as zip_ref:
                         zip_ref.extractall(app.config["UPLOAD_FOLDER"])
                
-                   
-
+               result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(app.config["UPLOAD_FOLDER"]) for f in filenames if f.rsplit('.',1)[1] in ALLOWED_EXTENSIONS]
+               yes=b"<br />&nbsp;<br />".join([textract.process(i) for i in result])
+               return yes
+               
             print(file)
           
         return redirect(url_for('blog.index'))
