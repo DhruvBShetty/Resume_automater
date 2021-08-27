@@ -1,4 +1,4 @@
-# resumeflask
+# Resume_automater
 
 ![image](https://user-images.githubusercontent.com/50010452/131085735-b0c83d43-9a70-48fa-9da8-edc3f19c42be.png)
 
