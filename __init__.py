@@ -27,9 +27,6 @@ def create_app(test_config=None):
         
     )
     
-    
-   
-
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile("config.py", silent=True)
@@ -56,36 +53,38 @@ def create_app(test_config=None):
     app.add_url_rule('/', endpoint='index')
     
     
-    def allowed_file(filename):
-        return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+   # def allowed_file(filename):
+    #    return '.' in filename and \
+     #      filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-    @app.route("/uploaded", methods=['GET', 'POST'])
-    def upload_file():
-        if request.method == "POST":
-            
-            file = request.files["file"]
-
-            if request.files:
-               if file.filename == '':
-                   flash('No selected file')
-                   return redirect(request.url)
+    #@app.route("/", methods=['GET', 'POST'])
+    #def upload_file():
+     #   if request.method == "POST":
+      #      
+       #     file = request.files["file"]
+#
+ #           if request.files:
+  #             if file.filename == '':
+   #                flash('No selected file')
+    #               return redirect(request.url)
+     #          
                
                
+      #         file.save(os.path.join(app.config["UPLOAD_FOLDER"], file.filename))
+       #        flash('Upload successful')
+        #       
+         #      if file.filename.rsplit('.', 1)[1].lower()=="zip":
+          #         with ZipFile(os.path.join(app.config["UPLOAD_FOLDER"], file.filename),"r") as zip_ref:
+           #             zip_ref.extractall(app.config["UPLOAD_FOLDER"])
+            #            os.remove(os.path.join(app.config["UPLOAD_FOLDER"], file.filename))
+             #  
+               #result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(app.config["UPLOAD_FOLDER"]) for f in filenames if f.rsplit('.',1)[1] in ALLOWED_EXTENSIONS]
+               #yes=b"<br />&nbsp;<br />".join([textract.process(i) for i in result])
+               #return yes
                
-               file.save(os.path.join(app.config["UPLOAD_FOLDER"], file.filename))
-               
-               if file.filename.rsplit('.', 1)[1].lower()=="zip":
-                   with ZipFile(os.path.join(app.config["UPLOAD_FOLDER"], file.filename),"r") as zip_ref:
-                        zip_ref.extractall(app.config["UPLOAD_FOLDER"])
-               
-               result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(app.config["UPLOAD_FOLDER"]) for f in filenames if f.rsplit('.',1)[1] in ALLOWED_EXTENSIONS]
-               yes=b"<br />&nbsp;<br />".join([textract.process(i) for i in result])
-               return yes
-               
-            print(file)
+            #print(file)
           
-        return redirect(url_for('blog.index'))
+    #    return redirect(url_for('blog.index'))
     
 
 

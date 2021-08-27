@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block header %}
@@ -5,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
+  <form action="/<int:id>/update" method="post">
     <label for="title">Title</label>
     <input name="title" id="title"
       value="{{ request.form['title'] or post['title'] }}" required>
@@ -18,3 +19,4 @@
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
   </form>
 {% endblock %}
+

@@ -11,9 +11,14 @@ CREATE TABLE post (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id INTEGER NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title TEXT NOT NULL,
+  sales INTEGER NOT NULL,
+  cosec INTEGER NOT NULL,
+  fund INTEGER NOT NULL,
+  operations INTEGER NOT NULL,
+  corpfinance INTEGER NOT NULL,
+  investment INTEGER NOT NULL,
   body TEXT NOT NULL,
-  resume BLOB,
+  title TEXT NOT NULL,  
   FOREIGN KEY (author_id) REFERENCES user (id)
   
   
