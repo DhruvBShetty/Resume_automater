@@ -13,7 +13,14 @@ of all the people who are actually of x job role.
 
 Currently trained for 6 job roles.
 
-![image](https://user-images.githubusercontent.com/50010452/131086112-19f9f7ba-2a62-46d0-8ae4-be298ac44630.png)
+![image](https://user-images.githubusercontent.com/50010452/132637399-b75a70e1-4b2d-482b-8bd8-81bccd7810e6.png)
+
+
+Sorts for every job role in descending order
+![image](https://user-images.githubusercontent.com/50010452/132639096-705a789e-624e-4538-8aa7-5c4069f408fd.png)
+
+![image](https://user-images.githubusercontent.com/50010452/132639246-aca1e527-ce80-4997-bcc3-451c96695f65.png)
+
 
 
 
