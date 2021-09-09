@@ -1,30 +1,55 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Candidates{% endblock %}</h1>
+  <h1>{% block title %}Candidate score for roles{% endblock %}</h1>
   {% if g.user %}
-    <a class="action" href="{{ url_for('blog.home') }}">New</a>
+    <a class="action" href="{{ url_for('blog.home') }}">Upload resume</a>
   {% endif %}
+  
 {% endblock %}
 
-{% block content %}
-  {% for post in posts %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['title'] }}</h1>
-          <div class="about">Fund:{{ post['fund'] }}%|Cosec:{{ post['cosec'] }}%|Sales:{{ post['sales'] }}% 
-          |Operations:{{post['operations']}}%|Investment:{{post['investment']}}%|Corp & finance:{{post['corpfinance']}}%</div>
-        </div>
-        {% if g.user['id'] == post['author_id'] %}
+
+{% if g.user%}
+    {% block content %}
+    <header>
+    <div class="dropdown">
+    <button class="dropbtn">Sort</button>
+    <div class="dropdown-content">
+        <a class="Fund_accountant" href="{{ url_for('blog.fundac') }}">Fund Accountant</a>
+        <a href="Company_secretary">Company secretary</a>
+        <a href="Financial_Sales">Financial Sales</a>
+        <a href="Operations">Operations</a>
+        <a href="Investment_banker">Investment banker</a>
+        <a href="Corporate_accounting_&_finance">Corporate accounting and finance</a>
+       
+   </div>
+   </div>
+   </header>
+      {% for post in posts %}
+       <article class="post">
+          <header>
+           <div>
+             <h1>{{ post['title'] }}</h1>
+             <button class="button">Shortlist</button>
+             <button class="button button4">Pending</button> 
+             <button class="button button3">Rejected</button>
+             <div class="about">Fund accountant:               {{ post['fund'] }}% <br> </br> 
+                             Company secretary:             {{ post['cosec'] }}% <br> </br> 
+                             Sales:                         {{ post['sales'] }}% 
+             <br> </br>         Operations:                    {{post['operations']}}% <br> </br> 
+                             Investment:                    {{post['investment']}}% <br> </br> 
+                             Corporate accounting & finance:{{post['corpfinance']}}%</div>
+           </div>
+           {% if g.user['id'] == post['author_id'] %}
           <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
-        {% endif %}
-      </header>
-      <p class="body">{{ post['body'] }}</p>
-    </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
-{% endblock %}
+           {% endif %}
+         </header>
+         <p class="body">{{ post['body'] }}</p>
+       </article>
+       {% if not loop.last %}
+         <hr>
+       {% endif %}
+     {% endfor %}
+   {% endblock %}
+{% endif %}
 

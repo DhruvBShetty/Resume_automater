@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Fund Accounting sorted descending{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('blog.home') }}">Upload resume</a>
+  {% endif %}
+  
+{% endblock %}
+
+
+
+{% if g.user %}
+   
+{% block content %}
+<header>
+<div class="dropdown">
+  <button class="dropbtn">Sort</button>
+  <div class="dropdown-content">
+    <a href="Fund_accountant">Fund Accountant</a>
+    <a href="Company_secretary">Company secretary</a>
+    <a href="Financial_Sales">Financial Sales</a>
+    <a href="Operations">Operations</a>
+   <a href="Investment_banker">Investment banker</a>
+   <a href="Corporate_accounting_&_finance">Corporate accounting and finance</a>
+  </div>
+</div>
+</header>
+
+
+  {% for post in posts %}
+    <article class="post">
+      <header>
+        <div>
+          <button class="button">Shortlist</button>
+          <button class="button button4">Pending</button> 
+          <button class="button button3">Rejected</button>
+          <h1>{{ post['title'] }}: {{ post['fund'] }}%</h1>
+           
+        </div>
+      </header>
+      <p class="body">{{ post['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+
+{% endif %}
+
