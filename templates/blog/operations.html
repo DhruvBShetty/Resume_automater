@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Fund Accountant sorted descending{% endblock %}</h1>
+  <h1>{% block title %}Operations sorted descending{% endblock %}</h1>
   {% if g.user %}
     <a class="action" href="{{ url_for('blog.home') }}">Upload resume</a>
   {% endif %}
@@ -35,7 +35,7 @@
           <button class="button">Shortlist</button>
           <button class="button button4">Pending</button> 
           <button class="button button3">Rejected</button>
-          <h1>{{ post['title'] }}: {{ post['fund'] }}%</h1>
+          <h1>{{ post['title'] }}: {{ post['operations'] }}%</h1>
            
         </div>
       </header>
@@ -46,7 +46,3 @@
     {% endif %}
   {% endfor %}
 {% endblock %}
-
-
-
-

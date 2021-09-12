@@ -51,6 +51,62 @@ def fundac():
     ).fetchall()
     return render_template('blog/fundac.html',posts=posts)
 
+@bp.route('/Company_secretary')
+@login_required
+def cosec():
+    db=get_db()
+    posts = db.execute(
+        'SELECT cosec,title'
+        ' FROM post'
+        ' ORDER BY cosec DESC'
+    ).fetchall()
+    return render_template('blog/cosec.html',posts=posts)
+
+@bp.route('/Financial_Sales')
+@login_required
+def sales():
+    db=get_db()
+    posts = db.execute(
+        'SELECT sales,title'
+        ' FROM post'
+        ' ORDER BY sales DESC'
+    ).fetchall()
+    return render_template('blog/sales.html',posts=posts)
+
+@bp.route('/Operations')
+@login_required
+def operations():
+    db=get_db()
+    posts = db.execute(
+        'SELECT operations,title'
+        ' FROM post'
+        ' ORDER BY operations DESC'
+    ).fetchall()
+    return render_template('blog/operations.html',posts=posts)
+
+@bp.route('/Investment_banker')
+@login_required
+def invbanker():
+    db=get_db()
+    posts = db.execute(
+        'SELECT investment,title'
+        ' FROM post'
+        ' ORDER BY investment DESC'
+    ).fetchall()
+    return render_template('blog/invbank.html',posts=posts)
+
+@bp.route('/Corporate_accounting_&_finance')
+@login_required
+def corpac():
+    db=get_db()
+    posts = db.execute(
+        'SELECT corpfinance,title'
+        ' FROM post'
+        ' ORDER BY corpfinance DESC'
+    ).fetchall()
+    return render_template('blog/corpfinance.html',posts=posts)
+
+
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
