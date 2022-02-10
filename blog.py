@@ -25,7 +25,7 @@ def score(x):
     if x>=0.5:
         score=100
     else:
-        score=round(x/(1-x)*100,2)
+        score=round(x*200,2)
     return score
 
 @bp.route('/')
@@ -134,14 +134,14 @@ def create():
            #title = file.filename.rsplit('.', 1)[0]
         body = " "
            
-        model2 = pickle.load(open('/home/dhruv/Downloads/model2', 'rb'))
-        model3 = pickle.load(open('/home/dhruv/Downloads/model3', 'rb'))
-        model4 = pickle.load(open('/home/dhruv/Downloads/model4', 'rb'))
-        model5 = pickle.load(open('/home/dhruv/Downloads/model5', 'rb'))
-        model6 = pickle.load(open('/home/dhruv/Downloads/model6', 'rb'))
-        model7 = pickle.load(open('/home/dhruv/Downloads/model7', 'rb'))
+        model2 = pickle.load(open('/home/dhruv/Downloads/modelcw_2 (3)', 'rb'))
+        model3 = pickle.load(open('/home/dhruv/Downloads/modelcw_3 (3)', 'rb'))
+        model4 = pickle.load(open('/home/dhruv/Downloads/modelcw_4 (3)', 'rb'))
+        model5 = pickle.load(open('/home/dhruv/Downloads/modelcw_5 (3)', 'rb'))
+        model6 = pickle.load(open('/home/dhruv/Downloads/modelcw_6 (3)', 'rb'))
+        model7 = pickle.load(open('/home/dhruv/Downloads/modelcw_7 (3)', 'rb'))
            
-        X_train_tf=pickle.load(open('/home/dhruv/Downloads/Xtraintf', 'rb'))
+        X_train_tf=pickle.load(open('/home/dhruv/Downloads/Xtraincv (3)', 'rb'))
     
         db = get_db()       
         countit=set()    
@@ -161,7 +161,7 @@ def create():
            #tfile=nlp(yes)
            #tftxt=" ".join([i.text.lower() for i in tfile.noun_chunks])
 
-                     tfex=X_train_tf.transform([yes])
+                     tfex=X_train_tf.transform([yes[0:3000]])
 
                      pred2=model2.predict_proba(tfex)
                      pred3=model3.predict_proba(tfex)
@@ -186,7 +186,7 @@ def create():
            #tfile=nlp(yes)
            #tftxt=" ".join([i.text.lower() for i in tfile.noun_chunks])
 
-            tfex=X_train_tf.transform([yes])
+            tfex=X_train_tf.transform([yes[0:3000]])
 
             pred2=model2.predict_proba(tfex)
             pred3=model3.predict_proba(tfex)
